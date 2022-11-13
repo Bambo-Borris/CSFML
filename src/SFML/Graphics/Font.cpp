@@ -113,6 +113,14 @@ sfGlyph sfFont_getGlyph(const sfFont* font, sfUint32 codePoint, unsigned int cha
     return glyph;
 }
 
+////////////////////////////////////////////////////////////
+sfBool sfFont_hasGlyph(const sfFont* font, sfUint32 codePoint)
+{ 
+    CSFML_CHECK_RETURN(font, false);
+
+    return font->This.hasGlyph(codePoint);
+}
+
 
 ////////////////////////////////////////////////////////////
 float sfFont_getKerning(const sfFont* font, sfUint32 first, sfUint32 second, unsigned int characterSize)
@@ -152,6 +160,7 @@ const sfTexture* sfFont_getTexture(sfFont* font, unsigned int characterSize)
     return &font->Textures[characterSize];
 }
 
+
 ////////////////////////////////////////////////////////////
 sfFontInfo sfFont_getInfo(const sfFont* font)
 {
@@ -161,4 +170,20 @@ sfFontInfo sfFont_getInfo(const sfFont* font)
     info.family = font->This.getInfo().family.c_str();
 
     return info;
+}
+
+
+////////////////////////////////////////////////////////////
+void sfFont_setSmooth(sfFont* font, sfBool smooth)
+{ 
+    font->This.setSmooth(smooth == sfTrue);
+}
+
+
+////////////////////////////////////////////////////////////
+sfBool sfFont_isSmooth(sfFont* font)
+{ 
+    CSFML_CHECK_RETURN(font, sfFalse);
+
+    return font->This.isSmooth();
 }
