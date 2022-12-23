@@ -138,6 +138,18 @@ CSFML_NETWORK_API sfBool sfPacket_endOfPacket(const sfPacket* packet);
 CSFML_NETWORK_API sfBool sfPacket_canRead(const sfPacket* packet);
 
 ////////////////////////////////////////////////////////////
+/// \brief Get the current reading position in the packet
+///
+/// The next read operation will read data from this position
+///
+/// \return The byte offset of the current read position
+///
+/// \see append
+///
+////////////////////////////////////////////////////////////
+CSFML_NETWORK_API unsigned int sfPacket_getReadPosition(const sfPacket* packet);
+
+////////////////////////////////////////////////////////////
 /// \brief Functions to extract data from a packet
 ///
 /// \param packet Packet object
